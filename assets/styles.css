@@ -1,0 +1,41 @@
+/* Custom styles for the Birthday Gift site */
+:root{
+  --rose-500: #f43f5e;
+}
+
+body{font-family: 'Montserrat', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial}
+
+/* Gift styles */
+.gift{display:block}
+.gift-lid{border-top-left-radius:0.6rem;border-top-right-radius:0.6rem}
+.gift.open .gift-lid{transform: translateY(-40%) rotateX(60deg)}
+
+/* Confetti canvas sits on top */
+#confetti-canvas{z-index:40}
+
+/* Gallery hover */
+.gallery-item{transition:transform .25s ease, box-shadow .25s ease}
+.gallery-item:hover{transform:scale(1.05);box-shadow:0 10px 30px rgba(0,0,0,0.12)}
+
+/* Modal */
+#modal{z-index:50}
+#modal.show{opacity:1;pointer-events:auto}
+
+/* Hearts falling */
+.heart{
+  position:fixed;
+  width:18px;height:18px;
+  font-size:18px;line-height:18px;
+  pointer-events:none;z-index:0;opacity:0.9;
+  transform:translate3d(0,0,0);
+}
+
+@keyframes fall{
+  0%{transform:translateY(-10vh) rotate(0deg)}
+  100%{transform:translateY(110vh) rotate(360deg)}
+}
+
+/* small responsive tweaks */
+@media (max-width:640px){
+  #gift{width:180px;height:180px}
+}
