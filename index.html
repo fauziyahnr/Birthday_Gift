@@ -14,97 +14,114 @@
 </head>
 <body class="min-h-screen bg-gradient-to-b from-pink-50 via-white to-indigo-50 font-montserrat text-gray-800">
   
-  <!-- Love falling background -->
+  <!-- Background Hati Jatuh -->
   <div id="love-layer" class="pointer-events-none fixed inset-0 -z-10"></div>
 
-  <!-- Container Utama -->
   <div class="max-w-4xl mx-auto p-6 space-y-8">
     
-    <!-- SECTION 1: Hadiah (Selalu Tampil Di Atas) -->
-    <section id="landing" class="flex flex-col items-center justify-center pt-8">
-      <div class="text-center space-y-4">
-        <h1 class="text-3xl md:text-4xl font-semibold">Selamat Datang</h1>
-        <p class="text-sm text-gray-600">Klik kotak hadiah untuk kejutan spesial</p>
-      </div>
-
-      <div class="mt-6 flex flex-col items-center gap-4">
-        <div id="gift" class="gift relative w-44 h-44 md:w-56 md:h-56 cursor-pointer" aria-label="Kotak Hadiah" role="button" tabindex="0">
-          <div class="gift-lid absolute left-0 right-0 top-0 h-1/3 bg-red-500 rounded-t-lg shadow-lg transform origin-top transition-transform duration-700"></div>
-          <div class="gift-body absolute left-0 right-0 bottom-0 top-[30%] bg-red-400 rounded-b-lg shadow-inner"></div>
-          <div class="ribbon vertical absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-6 bg-red-600"></div>
-          <div class="ribbon horizontal absolute left-0 right-0 top-1/2 -translate-y-1/2 h-6 bg-red-600"></div>
-        </div>
-
-        <button id="openBtn" class="px-4 py-2 bg-rose-500 text-white rounded-full shadow-md hover:bg-rose-600">Buka Hadiah</button>
-
-        <div id="revealName" class="mt-2 text-center opacity-0 transition-opacity duration-700">
-          <h2 class="text-2xl md:text-3xl font-bold tracking-wide">SEPTIAN DWI WAHYU</h2>
-        </div>
-      </div>
-
-      <!-- Confetti canvas -->
-      <canvas id="confetti-canvas" class="fixed inset-0 pointer-events-none"></canvas>
-    </section>
-
-    <!-- SECTION 2: Hitung Mundur & Pemutar Musik (Selalu Tampil / Bagian Depan) -->
-    <section id="always-visible" class="grid grid-cols-1 md:grid-cols-2 gap-6">
-      <!-- Hitung Mundur -->
-      <div class="p-6 bg-white/60 backdrop-blur-md rounded-2xl shadow-lg border border-white/30 text-center flex flex-col justify-center">
-        <h3 class="text-xl font-semibold">Hitung Mundur</h3>
-        <div id="countdown" class="text-3xl font-bold text-rose-600 mt-4">--:--:--:--</div>
-        <div class="text-sm text-gray-500 mt-2">Menuju hari spesial</div>
-      </div>
-
-      <!-- Musik Latar -->
-      <div class="p-6 bg-white/60 backdrop-blur-md rounded-2xl shadow-lg border border-white/30">
-        <h4 class="font-semibold">Musik Latar</h4>
-        <p class="text-sm text-gray-600 mt-1">Tekan play untuk membuka suasana romantis.</p>
-        <div class="mt-4 flex items-center gap-3">
-          <button id="musicBtn" class="px-4 py-2 bg-rose-500 text-white rounded-lg hover:bg-rose-600 transition">Play</button>
-          <div class="text-sm text-gray-600">Status: <span id="musicStatus">Paused</span></div>
-        </div>
-        <audio id="bgAudio" src="https://example.com/romantic-music.mp3" preload="auto"></audio>
-      </div>
-    </section>
-
-    <!-- SECTION 3: Kejutan (Pesan Spesial & Galeri - Disembunyikan Awalnya) -->
-    <div id="surprise-content" class="hidden opacity-0 transition-all duration-1000 ease-out space-y-8">
+    <!-- ================= SECTION 1: TAMPILAN AWAL ================= -->
+    <section id="section-1" class="transition-all duration-700 space-y-8">
       
-      <!-- Ucapan & Pesan -->
-      <section class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <!-- Box Hadiah -->
+      <div id="landing" class="flex flex-col items-center justify-center pt-4">
+        <div class="text-center space-y-3">
+          <h1 class="text-3xl md:text-4xl font-semibold">Selamat Datang</h1>
+          <p class="text-sm text-gray-600">Klik kotak hadiah untuk melihat kejutan spesial</p>
+        </div>
+
+        <div class="mt-6 flex flex-col items-center gap-4">
+          <div id="gift" class="gift relative w-44 h-44 md:w-56 md:h-56 cursor-pointer" aria-label="Kotak Hadiah" role="button" tabindex="0">
+            <div class="gift-lid absolute left-0 right-0 top-0 h-1/3 bg-red-500 rounded-t-lg shadow-lg transform origin-top transition-transform duration-700"></div>
+            <div class="gift-body absolute left-0 right-0 bottom-0 top-[30%] bg-red-400 rounded-b-lg shadow-inner"></div>
+            <div class="ribbon vertical absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-6 bg-red-600"></div>
+            <div class="ribbon horizontal absolute left-0 right-0 top-1/2 -translate-y-1/2 h-6 bg-red-600"></div>
+          </div>
+
+          <button id="openBtn" class="px-6 py-2.5 bg-rose-500 text-white font-medium rounded-full shadow-md hover:bg-rose-600 transition">
+            Buka Hadiah
+          </button>
+        </div>
+      </div>
+
+      <!-- Hitung Mundur & Musik Latar -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Hitung Mundur -->
+        <div class="p-6 bg-white/60 backdrop-blur-md rounded-2xl shadow-lg border border-white/30 text-center flex flex-col justify-center">
+          <h3 class="text-xl font-semibold">Hitung Mundur</h3>
+          <div id="countdown" class="text-3xl font-bold text-rose-600 mt-4">--:--:--:--</div>
+          <div class="text-sm text-gray-500 mt-2">Menuju hari spesial</div>
+        </div>
+
+        <!-- Musik Latar -->
+        <div class="p-6 bg-white/60 backdrop-blur-md rounded-2xl shadow-lg border border-white/30">
+          <h4 class="font-semibold">Musik Latar</h4>
+          <p class="text-sm text-gray-600 mt-1">Tekan play untuk membuka suasana romantis.</p>
+          <div class="mt-4 flex items-center gap-3">
+            <button id="musicBtn" class="px-4 py-2 bg-rose-500 text-white rounded-lg hover:bg-rose-600 transition">Play</button>
+            <div class="text-sm text-gray-600">Status: <span id="musicStatus">Paused</span></div>
+          </div>
+          <audio id="bgAudio" src="https://example.com/romantic-music.mp3" preload="auto"></audio>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- Confetti canvas -->
+    <canvas id="confetti-canvas" class="fixed inset-0 pointer-events-none z-40"></canvas>
+
+    <!-- ================= SECTION 2: SETELAH HADIAH DIBUKA (TERSEMBUNYI) ================= -->
+    <section id="section-2" class="hidden opacity-0 transition-all duration-700 ease-out space-y-8">
+      
+      <!-- Header Nama -->
+      <div class="text-center space-y-2">
+        <span class="text-rose-500 font-semibold tracking-wider text-sm uppercase">Kejutan Ulang Tahun</span>
+        <h2 class="text-3xl md:text-5xl font-bold tracking-wide text-gray-800">SEPTIAN DWI WAHYU</h2>
+      </div>
+
+      <!-- Ucapan & Pesan Spesial -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         <article class="p-6 bg-white/60 backdrop-blur-md rounded-2xl shadow-lg border border-white/30">
-          <h3 class="text-xl font-semibold">Ucapan Utama</h3>
-          <p class="mt-2 text-gray-700">Selamat ulang tahun! Semoga hari ini dan tahun-tahun mendatang dipenuhi kebahagiaan, cinta, dan keberhasilan.</p>
+          <h3 class="text-xl font-semibold text-rose-600">Ucapan Utama</h3>
+          <p class="mt-3 text-gray-700 leading-relaxed">
+            Selamat ulang tahun! Semoga hari ini dan tahun-tahun mendatang dipenuhi kebahagiaan, kesehatan, cinta, dan keberhasilan yang melimpah.
+          </p>
         </article>
 
         <article class="p-6 bg-white/60 backdrop-blur-md rounded-2xl shadow-lg border border-white/30">
-          <h4 class="font-semibold">Pesan Spesial</h4>
-          <div class="mt-3 prose max-w-none text-gray-800">
+          <h4 class="font-semibold text-xl text-rose-600">Pesan Spesial</h4>
+          <div class="mt-3 prose max-w-none text-gray-800 space-y-2">
             <p>Sayangku Septian,</p>
             <p>Di hari istimewamu ini, aku berharap semua mimpimu menjadi kenyataan. Terima kasih telah menjadi cahaya dalam hidupku.</p>
-            <p>Dengan cinta,</p>
+            <p class="pt-2">Dengan cinta,</p>
             <p><strong>Pengirim</strong></p>
           </div>
         </article>
-      </section>
+      </div>
 
       <!-- Galeri Foto -->
-      <section class="p-6 bg-white/60 backdrop-blur-md rounded-2xl shadow-lg border border-white/30">
-        <h3 class="text-xl font-semibold">Galeri Kenangan</h3>
-        <div class="mt-4 grid grid-cols-2 md:grid-cols-4 gap-4">
-          <img data-src="https://picsum.photos/id/1011/800/800" alt="Kenangan 1" class="gallery-item w-full h-44 object-cover rounded-lg cursor-pointer shadow-md hover:scale-105 transition" loading="lazy">
-          <img data-src="https://picsum.photos/id/1025/800/800" alt="Kenangan 2" class="gallery-item w-full h-44 object-cover rounded-lg cursor-pointer shadow-md hover:scale-105 transition" loading="lazy">
-          <img data-src="https://picsum.photos/id/1005/800/800" alt="Kenangan 3" class="gallery-item w-full h-44 object-cover rounded-lg cursor-pointer shadow-md hover:scale-105 transition" loading="lazy">
-          <img data-src="https://picsum.photos/id/1015/800/800" alt="Kenangan 4" class="gallery-item w-full h-44 object-cover rounded-lg cursor-pointer shadow-md hover:scale-105 transition" loading="lazy">
+      <div class="p-6 bg-white/60 backdrop-blur-md rounded-2xl shadow-lg border border-white/30">
+        <h3 class="text-xl font-semibold mb-4">Galeri Kenangan</h3>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <img data-src="https://picsum.photos/id/1011/800/800" alt="Kenangan 1" class="gallery-item w-full h-44 object-cover rounded-lg cursor-pointer shadow-md hover:scale-105 transition duration-300" loading="lazy">
+          <img data-src="https://picsum.photos/id/1025/800/800" alt="Kenangan 2" class="gallery-item w-full h-44 object-cover rounded-lg cursor-pointer shadow-md hover:scale-105 transition duration-300" loading="lazy">
+          <img data-src="https://picsum.photos/id/1005/800/800" alt="Kenangan 3" class="gallery-item w-full h-44 object-cover rounded-lg cursor-pointer shadow-md hover:scale-105 transition duration-300" loading="lazy">
+          <img data-src="https://picsum.photos/id/1015/800/800" alt="Kenangan 4" class="gallery-item w-full h-44 object-cover rounded-lg cursor-pointer shadow-md hover:scale-105 transition duration-300" loading="lazy">
         </div>
-      </section>
+      </div>
 
-    </div>
+      <!-- Tombol Kembali / Tutup -->
+      <div class="text-center pt-4">
+        <button id="backBtn" class="px-6 py-2.5 bg-gray-600 text-white rounded-full shadow-md hover:bg-gray-700 transition">
+          ← Kembali ke Depan
+        </button>
+      </div>
+
+    </section>
 
   </div>
 
   <!-- Modal Preview Galeri Foto -->
-  <div id="modal" class="fixed inset-0 bg-black/50 flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity z-50">
+  <div id="modal" class="fixed inset-0 bg-black/60 flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity z-50">
     <div class="max-w-3xl w-full rounded-xl overflow-hidden shadow-2xl">
       <img id="modalImg" src="" alt="Preview" class="w-full h-auto block">
     </div>
