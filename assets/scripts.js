@@ -75,6 +75,10 @@ gift.addEventListener('click', openGift);
 function launchConfetti(){
   const ctx = confettiCanvas.getContext('2d');
   resizeCanvas();
+
+  // Tampilkan kembali canvas jika sebelumnya tersembunyi
+  confettiCanvas.style.display = 'block';
+
   let particles = [];
   const colors = ['#f43f5e','#fb7185','#f97316','#f59e0b','#60a5fa','#a78bfa'];
 
@@ -88,6 +92,7 @@ function launchConfetti(){
     const vy = 2 + Math.random()*6;
     particles.push({x,y,size,color,vx,vy,tilt,life:0,ttl:120});
   }
+
   for(let i=0;i<120;i++) createParticle();
 
   let raf;
@@ -105,9 +110,17 @@ function launchConfetti(){
       ctx.fillRect(-p.size/2, -p.size/2, p.size, p.size*0.6);
       ctx.restore();
     });
+
     particles = particles.filter(p=>p.life < p.ttl);
-    if(particles.length>0) raf = requestAnimationFrame(frame);
-    else cancelAnimationFrame(raf);
+
+    if(particles.length > 0) {
+      raf = requestAnimationFrame(frame);
+    } else {
+      // PERUBAHAN DI SINI: Sembunyikan canvas total ketika confetti sudah habis
+      cancelAnimationFrame(raf);
+      ctx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
+      confettiCanvas.style.display = 'none';
+    }
   }
   frame();
 }
