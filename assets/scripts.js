@@ -135,37 +135,48 @@ musicBtn.addEventListener('click', ()=>{
   }
 });
 
-// 4) Countdown (customize targetDate string as needed)
-// Default: use next occurrence of current month/day (example: 12-31)
-let targetDate = new Date();
-// Example customization: set birthday month/day here (0-based month)
-const birthMonth = targetDate.getMonth(); // default: current month
-const birthDay = targetDate.getDate();
-// If you want to set a specific date, replace the above with: const targetDate = new Date('2026-08-25T00:00:00');
-function computeTarget(){
-  const now = new Date();
-  let year = now.getFullYear();
-  const t = new Date(year, birthMonth, birthDay, 0,0,0);
-  if(t - now <= 0) t.setFullYear(year+1);
-  return t;
-}
-const finalDate = computeTarget();
+// 4) Countdown (Target: 13 September 2026)
+function updateCountdown() {
+  const countdownEl = document.getElementById('countdown');
+  if (!countdownEl) return;
 
-function updateCountdown(){
+  // Tanggal Target: 13 September 2026 jam 00:00:00
+  const targetDate = new Date('2026-09-13T00:00:00');
   const now = new Date();
-  const diff = finalDate - now;
-  if(diff <= 0){
-    countdownEl.textContent = 'Selamat Ulang Tahun!';
+
+  // Hitung selisih waktu dalam milidetik
+  const diff = targetDate - now;
+
+  // Konversi selisih ke hitungan hari
+  const oneDayInMs = 1000 * 60 * 60 * 24;
+  const daysDiff = diff / oneDayInMs;
+
+  // KONDISI 1: Tepat di Hari Ulang Tahun (13 September 2026)
+  // Berada di antara jam 00:00:00 hingga 23:59:59 hari H (0 sampai -1 hari)
+  if (daysDiff <= 0 && daysDiff > -1) {
+    countdownEl.textContent = 'SELAMAT ULANG TAHUN';
     return;
   }
-  const days = Math.floor(diff / (1000*60*60*24));
-  const hrs = Math.floor((diff / (1000*60*60)) % 24);
-  const mins = Math.floor((diff / (1000*60)) % 60);
+
+  // KONDISI 2: Sudah Lewat Tanggal Ulang Tahun (Setelah 13 September 2026)
+  if (daysDiff <= -1) {
+    const daysPassed = Math.floor(Math.abs(daysDiff));
+    countdownEl.textContent = `${daysPassed} hari yang lalu kamu ulang tahun`;
+    return;
+  }
+
+  // KONDISI SEBELUM: Masih Belum Ulang Tahun (Hitung Mundur Biasa)
+  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+  const hrs = Math.floor((diff / (1000 * 60 * 60)) % 24);
+  const mins = Math.floor((diff / (1000 * 60)) % 60);
   const secs = Math.floor((diff / 1000) % 60);
-  countdownEl.textContent = `${days}d ${hrs}j ${mins}m ${secs}s`;
+
+  const formatNum = (num) => String(num).padStart(2, '0');
+  countdownEl.textContent = `${days}d ${formatNum(hrs)}j ${formatNum(mins)}m ${formatNum(secs)}s`;
 }
-setInterval(updateCountdown,1000);
+// Jalankan pertama kali & set interval per detik
 updateCountdown();
+setInterval(updateCountdown, 1000);
 
 // 5) Gallery modal
 galleryItems.forEach(img=>{
