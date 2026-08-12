@@ -18,24 +18,55 @@ const modalImg = document.getElementById('modalImg');
 const galleryItems = document.querySelectorAll('.gallery-item');
 const loveLayer = document.getElementById('love-layer');
 
+// Ambil elemen section
+const section1 = document.getElementById('section-1');
+const section2 = document.getElementById('section-2');
+const backBtn = document.getElementById('backBtn');
+
 // 1) Gift open + confetti
 function openGift(){
   if(gift.classList.contains('open')) return;
+  
+  // 1. Jalankan animasi kado & pesta kembang api (confetti)
   gift.classList.add('open');
-  revealName.style.opacity = '1';
   launchConfetti();
 
-  // --- TAMBAHAN KODE DI SINI ---
-  const surpriseContent = document.getElementById('surprise-content');
-  if (surpriseContent) {
-    // Hapus kelas hidden agar elemen masuk ke DOM
-    surpriseContent.classList.remove('hidden');
-    
-    // Beri jeda kecil agar animasi fade-in Tailwind berjalan mulus
+  // 2. Transisi Menghilangkan Section 1
+  if (section1 && section2) {
+    section1.classList.add('opacity-0');
+
     setTimeout(() => {
-      surpriseContent.classList.remove('opacity-0');
-    }, 50);
+      // Sembunyikan total Section 1
+      section1.classList.add('hidden');
+
+      // Tampilkan Section 2
+      section2.classList.remove('hidden');
+
+      // Beri efek fade-in yang halus
+      setTimeout(() => {
+        section2.classList.remove('opacity-0');
+      }, 50);
+
+    }, 600); // Waktu tunggu sesuai durasi animasi transisi
   }
+}
+
+// Opsional: Logika jika ingin kembali ke Section 1
+if (backBtn) {
+  backBtn.addEventListener('click', () => {
+    section2.classList.add('opacity-0');
+
+    setTimeout(() => {
+      section2.classList.add('hidden');
+      section1.classList.remove('hidden');
+      gift.classList.remove('open'); // Reset status kado
+
+      setTimeout(() => {
+        section1.classList.remove('opacity-0');
+      }, 50);
+
+    }, 600);
+  });
 }
 openBtn.addEventListener('click', openGift);
 gift.addEventListener('click', openGift);
