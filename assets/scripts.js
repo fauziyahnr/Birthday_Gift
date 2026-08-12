@@ -24,6 +24,18 @@ function openGift(){
   gift.classList.add('open');
   revealName.style.opacity = '1';
   launchConfetti();
+
+  // --- TAMBAHAN KODE DI SINI ---
+  const surpriseContent = document.getElementById('surprise-content');
+  if (surpriseContent) {
+    // Hapus kelas hidden agar elemen masuk ke DOM
+    surpriseContent.classList.remove('hidden');
+    
+    // Beri jeda kecil agar animasi fade-in Tailwind berjalan mulus
+    setTimeout(() => {
+      surpriseContent.classList.remove('opacity-0');
+    }, 50);
+  }
 }
 openBtn.addEventListener('click', openGift);
 gift.addEventListener('click', openGift);
