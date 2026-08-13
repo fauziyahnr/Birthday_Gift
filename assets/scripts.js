@@ -191,19 +191,32 @@ function updateCountdown() {
 updateCountdown();
 setInterval(updateCountdown, 1000);
 
-// 5) Gallery modal
-galleryItems.forEach(img=>{
-  // lazy load
-  img.src = img.dataset.src;
-  img.addEventListener('click', ()=>{
-    modalImg.src = img.src;
-    modal.classList.add('show');
-  });
+// 5) Gallery modal (Disesuaikan untuk pembungkus Polaroid)
+galleryItems.forEach(item => {
+    const img = item.querySelector('img');
+    if (!img) return;
+
+    // Load gambar dari data-src ke src
+    if (img.dataset.src) {
+        img.src = img.dataset.src;
+    }
+
+    // Event listener saat kartu/foto diklik
+    item.addEventListener('click', () => {
+        if (modalImg && modal) {
+            modalImg.src = img.src || img.dataset.src;
+            modal.classList.add('show');
+        }
+    });
 });
-modal.addEventListener('click', ()=>{
-  modal.classList.remove('show');
-  modalImg.src = '';
-});
+
+// Event listener untuk menutup modal
+if (modal) {
+    modal.addEventListener('click', () => {
+        modal.classList.remove('show');
+        if (modalImg) modalImg.src = '';
+    });
+}
 
 // 6) Love falling effect (pure CSS/JS)
 function spawnHeart(){
