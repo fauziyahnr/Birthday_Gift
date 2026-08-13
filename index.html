@@ -59,7 +59,7 @@
         <!-- Musik Latar -->
         <div class="p-5 md:p-6 bg-white/70 backdrop-blur-md rounded-2xl shadow-sm border border-white/40">
           <h4 class="font-semibold text-lg">Musik Latar</h4>
-          <p class="text-xs sm:text-sm text-gray-600 mt-1">Tekan play untuk membuka suasana romantis.</p>
+          <p class="text-xs sm:text-sm text-gray-600 mt-1">Tekan play untuk mendengarkan musik.</p>
           <div class="mt-4 flex items-center gap-3">
             <button id="musicBtn" class="min-h-[40px] px-5 py-2 bg-rose-500 text-white font-medium rounded-xl hover:bg-rose-600 active:scale-95 transition touch-manipulation">
               Play
@@ -96,24 +96,58 @@
         <article class="p-5 md:p-6 bg-white/70 backdrop-blur-md rounded-2xl shadow-lg border border-white/40">
           <h4 class="font-semibold text-lg md:text-xl text-rose-600">Pesan Spesial</h4>
           <div class="mt-2 text-sm md:text-base text-gray-800 space-y-2 leading-relaxed">
-            <p>Sayangku Septian,</p>
+            <p>KakWay,</p>
             <p>Di hari istimewamu ini, aku berharap semua mimpimu menjadi kenyataan. Terima kasih telah menjadi cahaya dalam hidupku.</p>
             <p class="pt-2">Dengan cinta,</p>
-            <p><strong>Pengirim</strong></p>
+            <p><strong>Cia</strong></p>
           </div>
         </article>
       </div>
 
-      <!-- Galeri Foto (Grid 2 Kolom di HP) -->
-      <div class="p-5 md:p-6 bg-white/70 backdrop-blur-md rounded-2xl shadow-sm border border-white/40">
-        <h3 class="text-lg md:text-xl font-semibold mb-3 md:mb-4">Galeri Kenangan</h3>
-        <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
-          <img data-src="https://picsum.photos/id/1011/800/800" alt="Kenangan 1" class="gallery-item w-full h-36 sm:h-44 object-cover rounded-xl cursor-pointer shadow-sm hover:scale-105 active:scale-95 transition duration-300" loading="lazy">
-          <img data-src="https://picsum.photos/id/1025/800/800" alt="Kenangan 2" class="gallery-item w-full h-36 sm:h-44 object-cover rounded-xl cursor-pointer shadow-sm hover:scale-105 active:scale-95 transition duration-300" loading="lazy">
-          <img data-src="https://picsum.photos/id/1005/800/800" alt="Kenangan 3" class="gallery-item w-full h-36 sm:h-44 object-cover rounded-xl cursor-pointer shadow-sm hover:scale-105 active:scale-95 transition duration-300" loading="lazy">
-          <img data-src="https://picsum.photos/id/1015/800/800" alt="Kenangan 4" class="gallery-item w-full h-36 sm:h-44 object-cover rounded-xl cursor-pointer shadow-sm hover:scale-105 active:scale-95 transition duration-300" loading="lazy">
-        </div>
+      <!-- Galeri Kenangan / Memori (Gaya Polaroid) -->
+<div class="p-5 md:p-6 bg-white/70 backdrop-blur-md rounded-2xl shadow-sm border border-white/40 space-y-4">
+  <div class="text-center sm:text-left">
+    <h3 class="text-lg md:text-xl font-bold text-rose-600">Galeri Kenangan 📸</h3>
+    <p class="text-xs sm:text-sm text-gray-500">Klik pada foto untuk melihat ukuran penuh</p>
+  </div>
+
+  <!-- Grid Polaroid -->
+  <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+    
+    <!-- Item 1 -->
+    <div class="gallery-item bg-white p-2.5 sm:p-3 rounded-xl shadow-md border border-gray-100 hover:-translate-y-1.5 hover:shadow-xl transition duration-300 cursor-pointer">
+      <div class="overflow-hidden rounded-lg aspect-square bg-gray-100">
+        <img data-src="assets/foto1.jpg" alt="Momen Spesial 1" class="w-full h-full object-cover hover:scale-110 transition duration-500" loading="lazy">
       </div>
+      <p class="mt-2 text-center text-xs font-medium text-gray-600 truncate">Momen Pertama ✨</p>
+    </div>
+
+    <!-- Item 2 -->
+    <div class="gallery-item bg-white p-2.5 sm:p-3 rounded-xl shadow-md border border-gray-100 hover:-translate-y-1.5 hover:shadow-xl transition duration-300 cursor-pointer">
+      <div class="overflow-hidden rounded-lg aspect-square bg-gray-100">
+        <img data-src="assets/foto2.jpg" alt="Momen Spesial 2" class="w-full h-full object-cover hover:scale-110 transition duration-500" loading="lazy">
+      </div>
+      <p class="mt-2 text-center text-xs font-medium text-gray-600 truncate">Jalan-jalan 🍦</p>
+    </div>
+
+    <!-- Item 3 -->
+    <div class="gallery-item bg-white p-2.5 sm:p-3 rounded-xl shadow-md border border-gray-100 hover:-translate-y-1.5 hover:shadow-xl transition duration-300 cursor-pointer">
+      <div class="overflow-hidden rounded-lg aspect-square bg-gray-100">
+        <img data-src="assets/foto3.jpg" alt="Momen Spesial 3" class="w-full h-full object-cover hover:scale-110 transition duration-500" loading="lazy">
+      </div>
+      <p class="mt-2 text-center text-xs font-medium text-gray-600 truncate">Tertawa Bersama 😄</p>
+    </div>
+
+    <!-- Item 4 -->
+    <div class="gallery-item bg-white p-2.5 sm:p-3 rounded-xl shadow-md border border-gray-100 hover:-translate-y-1.5 hover:shadow-xl transition duration-300 cursor-pointer">
+      <div class="overflow-hidden rounded-lg aspect-square bg-gray-100">
+        <img data-src="assets/foto4.jpg" alt="Momen Spesial 4" class="w-full h-full object-cover hover:scale-110 transition duration-500" loading="lazy">
+      </div>
+      <p class="mt-2 text-center text-xs font-medium text-gray-600 truncate">Hari Bahagia 🎉</p>
+    </div>
+
+  </div>
+</div>
 
       <!-- Tombol Kembali -->
       <div class="text-center pt-2">
