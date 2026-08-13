@@ -149,6 +149,59 @@
   </div>
 </div>
 
+<!-- Papan Harapan & Doa Interaktif (Wish List) -->
+<div class="p-5 md:p-6 bg-white/70 backdrop-blur-md rounded-2xl shadow-sm border border-white/40 space-y-4">
+  <div class="text-center sm:text-left">
+    <h3 class="text-lg md:text-xl font-bold text-rose-600">Harapan & Doa ✨</h3>
+    <p class="text-xs sm:text-sm text-gray-500">Klik setiap kartu untuk membaca harapan spesial</p>
+  </div>
+
+  <!-- Grid Kartu Harapan -->
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+    
+    <!-- Kartu 1 -->
+    <div class="wish-card bg-gradient-to-br from-rose-100 to-pink-50 p-4 rounded-xl shadow-sm border border-rose-200 hover:shadow-md hover:-translate-y-1 transition duration-300 cursor-pointer"
+         data-title="Kesehatan & Kebahagiaan 🌿" 
+         data-wish="Semoga di usiamu yang baru ini, kamu selalu diberikan kesehatan yang prima, pikiran yang tenang, dan kebahagiaan yang melimpah setiap harinya.">
+      <div class="text-2xl mb-2">🌿</div>
+      <h4 class="font-bold text-gray-800 text-sm">Kesehatan & Kebahagiaan</h4>
+      <p class="text-xs text-gray-500 mt-1 line-clamp-2">Klik untuk membaca harapan...</p>
+    </div>
+
+    <!-- Kartu 2 -->
+    <div class="wish-card bg-gradient-to-br from-indigo-100 to-blue-50 p-4 rounded-xl shadow-sm border border-indigo-200 hover:shadow-md hover:-translate-y-1 transition duration-300 cursor-pointer"
+         data-title="Karir & Impian 🚀" 
+         data-wish="Semoga semua impian, cita-cita, dan target karirmu dapat tercapai dengan kelancaran. Tetap semangat dan percaya pada kemampuan dirimu!">
+      <div class="text-2xl mb-2">🚀</div>
+      <h4 class="font-bold text-gray-800 text-sm">Karir & Impian</h4>
+      <p class="text-xs text-gray-500 mt-1 line-clamp-2">Klik untuk membaca harapan...</p>
+    </div>
+
+    <!-- Kartu 3 -->
+    <div class="wish-card bg-gradient-to-br from-amber-100 to-yellow-50 p-4 rounded-xl shadow-sm border border-amber-200 hover:shadow-md hover:-translate-y-1 transition duration-300 cursor-pointer"
+         data-title="Keberkahan & Kedamaian 🤍" 
+         data-wish="Semoga langkahmu selalu diberkahi, dikelilingi oleh orang-orang baik, serta selalu mendapatkan kedamaian dalam setiap keputusan hidupmu.">
+      <div class="text-2xl mb-2">🤍</div>
+      <h4 class="font-bold text-gray-800 text-sm">Keberkahan & Kedamaian</h4>
+      <p class="text-xs text-gray-500 mt-1 line-clamp-2">Klik untuk membaca harapan...</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- Modal Pop-up untuk Harapan -->
+<div id="wishModal" class="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity z-50">
+  <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl text-center space-y-4 transform scale-95 transition-transform duration-300" id="wishModalCard">
+    <div id="wishIcon" class="text-4xl">✨</div>
+    <h3 id="wishTitle" class="text-xl font-bold text-rose-600">Judul Harapan</h3>
+    <p id="wishText" class="text-gray-600 text-sm leading-relaxed">Isi pesan harapan...</p>
+    <button id="closeWishBtn" class="mt-2 px-6 py-2 bg-rose-500 text-white rounded-full font-medium hover:bg-rose-600 active:scale-95 transition">
+      Tutup
+    </button>
+  </div>
+</div>
+
+      
       <!-- Tombol Kembali -->
       <div class="text-center pt-2">
         <button id="backBtn" class="w-full sm:w-auto min-h-[44px] px-8 py-2.5 bg-gray-600 text-white font-medium rounded-full shadow-md hover:bg-gray-700 active:scale-95 transition touch-manipulation">
