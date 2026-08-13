@@ -38,7 +38,7 @@ function openGift(){
 
   // 1. Putar efek suara pop & cheer
     playSFX(sfxPop);
-    setTimeout(() => playSFX(sfxCheer), 300); // Mainkan suara sorakan sesaat setelahnya
+    setTimeout(() => playSFX(sfxPop), 300); // Mainkan suara sorakan sesaat setelahnya
   
   // 2. Jalankan animasi kado & pesta kembang api (confetti)
   gift.classList.add('open');
@@ -83,8 +83,6 @@ if (backBtn) {
     }, 600);
   });
 }
-openBtn.addEventListener('click', openGift);
-gift.addEventListener('click', openGift);
 
 // 2) Confetti implementation (canvas)
 function launchConfetti(){
