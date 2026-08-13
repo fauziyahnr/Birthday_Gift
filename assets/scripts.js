@@ -17,6 +17,15 @@ const modal = document.getElementById('modal');
 const modalImg = document.getElementById('modalImg');
 const galleryItems = document.querySelectorAll('.gallery-item');
 const loveLayer = document.getElementById('love-layer');
+const sfxPop = document.getElementById('sfxPop');
+
+// Fungsi helper untuk memutar SFX
+function playSFX(audioElement) {
+    if (audioElement) {
+        audioElement.currentTime = 0; // Reset ke awal agar bisa diputar ulang cepat
+        audioElement.play().catch(err => console.log("SFX autoplay blocked:", err));
+    }
+}
 
 // Ambil elemen section
 const section1 = document.getElementById('section-1');
@@ -26,12 +35,16 @@ const backBtn = document.getElementById('backBtn');
 // 1) Gift open + confetti
 function openGift(){
   if(gift.classList.contains('open')) return;
+
+  // 1. Putar efek suara pop & cheer
+    playSFX(sfxPop);
+    setTimeout(() => playSFX(sfxCheer), 300); // Mainkan suara sorakan sesaat setelahnya
   
-  // 1. Jalankan animasi kado & pesta kembang api (confetti)
+  // 2. Jalankan animasi kado & pesta kembang api (confetti)
   gift.classList.add('open');
   launchConfetti();
 
-  // 2. Transisi Menghilangkan Section 1
+  // 3. Transisi Menghilangkan Section 1
   if (section1 && section2) {
     section1.classList.add('opacity-0');
 
