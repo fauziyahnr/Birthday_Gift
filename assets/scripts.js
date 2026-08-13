@@ -63,6 +63,8 @@ function openGift(){
     }, 600); // Waktu tunggu sesuai durasi animasi transisi
   }
 }
+if (openBtn) openBtn.addEventListener('click', openGift);
+if (gift) gift.addEventListener('click', openGift);
 
 // Opsional: Logika jika ingin kembali ke Section 1
 if (backBtn) {
