@@ -244,3 +244,47 @@ audio.addEventListener('play', ()=>{
   revealName.style.opacity = '1';
 });
 
+// Logic Modal Harapan & Doa
+const wishCards = document.querySelectorAll('.wish-card');
+const wishModal = document.getElementById('wishModal');
+const wishModalCard = document.getElementById('wishModalCard');
+const wishTitle = document.getElementById('wishTitle');
+const wishText = document.getElementById('wishText');
+const wishIcon = document.getElementById('wishIcon');
+const closeWishBtn = document.getElementById('closeWishBtn');
+
+wishCards.forEach(card => {
+    card.addEventListener('click', () => {
+        const title = card.getAttribute('data-title');
+        const wish = card.getAttribute('data-wish');
+        const icon = card.querySelector('.text-2xl')?.textContent || '✨';
+
+        if (wishModal && wishTitle && wishText) {
+            wishTitle.textContent = title;
+            wishText.textContent = wish;
+            wishIcon.textContent = icon;
+            
+            wishModal.classList.remove('opacity-0', 'pointer-events-none');
+            wishModalCard.classList.remove('scale-95');
+            wishModalCard.classList.add('scale-100');
+        }
+    });
+});
+
+function closeWishModal() {
+    if (wishModal && wishModalCard) {
+        wishModal.classList.add('opacity-0', 'pointer-events-none');
+        wishModalCard.classList.remove('scale-100');
+        wishModalCard.classList.add('scale-95');
+    }
+}
+
+if (closeWishBtn) {
+    closeWishBtn.addEventListener('click', closeWishModal);
+}
+
+if (wishModal) {
+    wishModal.addEventListener('click', (e) => {
+        if (e.target === wishModal) closeWishModal();
+    });
+}
